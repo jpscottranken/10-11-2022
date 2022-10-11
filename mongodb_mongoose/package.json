@@ -1,0 +1,16 @@
+{
+  "name": "mongodb_mongoose",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start"    : "node app.js",
+    "devStart" : "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "Jeff Scott",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^6.6.5"
+  }
+}
