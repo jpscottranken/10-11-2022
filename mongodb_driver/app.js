@@ -6,7 +6,7 @@ const url = "mongodb://localhost:27017"
 const client = new MongoClient(url)
 
 //  Set up database
-const dbName = "booksDB"
+const dbName = "booksdb"
 
 async function main() {
   //  Use connect method to connect to server
@@ -19,7 +19,7 @@ async function main() {
   
   //	NOTE: Only run lines 20 - 44 below once.
   //		  Then comment them out as you continue.
-  const insertResult = await collection.insertMany([
+/*  const insertResult = await collection.insertMany([
     {
       name: "A Christmas Carol",
       author: "Charles Dickens",
@@ -43,14 +43,17 @@ async function main() {
   //  Verify result
   console.log("Inserted documents: ", insertResult)
 
+
   //	READ
   
   //	NOTE: Only run lines 50 - 51 below once.
   //		  Then comment them out as you continue.
   const findResult = await collection.find({}).toArray()
   console.log("Found documents: ", findResult)
+*/
 
-  //	UPDATE
+
+/*  //	UPDATE
   
   //	NOTE: Only run lines 57 - 61 below once.
   //		  Then comment them out as you continue.
@@ -59,8 +62,8 @@ async function main() {
     { $set: { pages: 999 } }
   )
   console.log("Updated Document: ", updateResult)
-
-  //	DELETE
+*/
+ //	DELETE
   
   //	NOTE: Only run lines 67 = 68 below once.
   //		  Then comment them out as you continue.

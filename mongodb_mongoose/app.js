@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-mongoose.connect("mongodb://localhost:27017/booksDB")
+mongoose.connect("mongodb://localhost:27017/booksdb")
 
 const bookSchema = new mongoose.Schema({
   title: {
@@ -22,6 +22,8 @@ const bookSchema = new mongoose.Schema({
 
 const Book = mongoose.model("Book", bookSchema)
 
+
+//	CREATE
 const wap = new Book({
   title: "War and Peace",
   pages: 678,
@@ -62,6 +64,7 @@ const authorSchema = new mongoose.Schema({
   firstname: String,
   lastname: String,
   age: Number,
+  bookAuthored: bookSchema
 })
 
 const Author = mongoose.model("Author", authorSchema)
@@ -70,24 +73,28 @@ const tolstoy = new Author({
   firstname: "Leonoid",
   lastname: "Tolstoy",
   age: 66,
+  bookAuthored: wap
 })
 
 const dickens = new Author({
   firstname: "Charles",
   lastname: "Dickens",
   age: 40,
+  bookAuthored: acc
 })
 
 const mellville = new Author({
-  firstname: "LeonHermanoid",
+  firstname: "Herman",
   lastname: "Melville",
   age: 50,
+  bookAuthored: md
 })
 
 const twain = new Author({
   firstname: "Mark",
   lastname: "Twain",
   age: 47,
+  bookAuthored: ts
 })
 
 //  authors.save()
@@ -106,19 +113,11 @@ Book.find((err, book) => {
   if (err) {
     console.log(err)
   } else {
-    books.forEach((book) => {
+    book.forEach((book) => {
       console.log(book.title)
     })
   }
 })
-
-/*
-    Go to the mongoshell mongosh
-    show dbs (booksDb should be there)
-    use booksDB
-    show collections
-    db.books.find()
-*/
 
 //  UPDATE
 Book.updateOne({ title: "War and Peace" }, { pages: 700 }, (err) => {
@@ -129,6 +128,7 @@ Book.updateOne({ title: "War and Peace" }, { pages: 700 }, (err) => {
   }
 })
 
+/*
 //  DELETE
 Book.deleteOne({ title: "Tom Sawyer" }, (err) => {
   if (err) {
@@ -137,11 +137,4 @@ Book.deleteOne({ title: "Tom Sawyer" }, (err) => {
     console.log("Record successfully deleted")
   }
 })
-
-/*
-    Go to the mongoshell mongosh
-    show dbs (booksDb should be there)
-    use booksDB
-    show collections
-    db.books.find()
 */
